@@ -1,0 +1,35 @@
+// routes/index.ts
+import { AuthRoutes } from "@/app/auth/auth.route";
+import CacheRoutes from "@/app/cache/cache.route";
+import { UsersRoutes } from "../app/users/users.route";
+
+import express from "express";
+const routes = express();
+
+const routeModules: RouteModule = [
+  {
+    path: "/users",
+    route: UsersRoutes,
+  },
+
+  {
+    path: "/auth/otp",
+    route: AuthRoutes,
+  },
+
+  {
+    path: "/cache",
+    route: CacheRoutes,
+  },
+];
+
+routeModules.forEach(({ path, route }) => {
+  routes.use(path, route);
+});
+
+export default routes;
+
+export type RouteModule = {
+  path: string;
+  route: express.Router;
+}[];

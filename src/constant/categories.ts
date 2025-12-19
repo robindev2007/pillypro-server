@@ -1,0 +1,75 @@
+export const categories = [
+  {
+    category: "Holistic Services",
+    subcategories: [
+      "Yoga (All)",
+      "Meditation",
+      "Breathwork",
+      "Sound Therapy (Sound Bath, Gong Bath, etc)",
+      "Tai Chi / Qigong",
+      "Somatic Movement",
+      "Reiki",
+      "Energy Healing",
+      "Crystal Healing",
+      "Quantum Healing",
+      "Other Services",
+    ],
+  },
+  {
+    category: "Health & Wellness",
+    subcategories: [
+      "Massage Therapy",
+      "Therapeutic Touch",
+      "Myofascial Release",
+      "Acupuncture",
+      "Acupressure",
+      "Shiatsu",
+      "Lymphatic Drainage",
+      "Cupping",
+      "Homeopathy",
+      "Herbal Medicine",
+      "Reflexology",
+      "Spa Wellness",
+      "Light Therapy",
+      "Osteopathy",
+      "Other Therapies",
+    ],
+  },
+  {
+    category: "Coaching",
+    subcategories: ["All", "Life Coaching", "Stress Management", "Mind & Body"],
+  },
+  {
+    category: "Spiritual Services",
+    subcategories: [
+      "Astrology",
+      "Tarot",
+      "Oracle Reading",
+      "Intuitive Guidance",
+      "Kambo",
+      "Hypnotherapy",
+      "Moon Circles",
+      "Manifestation Workshop",
+    ],
+  },
+  {
+    category: "Workshops",
+    subcategories: ["Day Events (Listed by Business)"],
+  },
+  {
+    category: "Retreats",
+    subcategories: ["All Retreats (UK or Abroad)"],
+  },
+  {
+    category: "Studio Hire",
+    subcategories: ["1 Hour to Full Days"],
+  },
+  {
+    category: "Venue Hire",
+    subcategories: ["Homes", "Villas", "Studios", "1 to 30 Days Hire"],
+  },
+  {
+    category: "Learning / Courses",
+    subcategories: ["Online Courses", "One to One", "Group Courses"],
+  },
+];

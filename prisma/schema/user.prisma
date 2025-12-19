@@ -1,0 +1,83 @@
+model User {
+    id String @id @default(cuid())
+
+    name    String
+    email   String  @unique
+    profile String? @default("")
+
+    // for business owner
+    phone       String?
+    dateOfBirth DateTime?
+    companyName String?
+    location    Json? // { address: string, lat: number, lng: number }    
+
+    isDeleted Boolean  @default(false)
+    fcmTokens String[] @default([])
+
+    role USER_ROLE_ENUM @default(USER)
+
+    passwordHashed    String
+    isAgreeWithTerms  Boolean @default(true)
+    isAccountVerified Boolean @default(false)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    expiredTokens ExpiredTokens[]
+    notifications Notification[]
+
+    @@index([email])
+    @@index([role])
+    @@index([isAccountVerified])
+    @@map("users")
+}
+
+model OTP {
+    id String @id @default(cuid())
+
+    email     String
+    code      String
+    expiresAt DateTime
+    isRevoked Boolean  @default(false)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([email])
+    @@index([expiresAt])
+    @@index([email, expiresAt])
+    @@map("otps")
+}
+
+model ExpiredTokens {
+    id String @id @default(cuid())
+
+    userId    String
+    user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+    token     String
+    expiresAt DateTime
+    isRevoked Boolean       @default(false)
+    tokenType TokenTypeEnum
+    revokedAt DateTime?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([token])
+    @@index([userId])
+    @@index([expiresAt])
+    @@index([token, expiresAt])
+    @@map("expired_tokens")
+}
+
+enum TokenTypeEnum {
+    ACCESS
+    REFRESH
+    PASSWORD_RESET
+}
+
+enum USER_ROLE_ENUM {
+    USER
+    BUSINESS_OWNER
+    SUPER_ADMIN
+}
