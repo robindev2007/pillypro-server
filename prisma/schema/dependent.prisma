@@ -1,0 +1,16 @@
+model Dependent {
+    id            String  @id @default(uuid())
+    dependentId   String?
+    dependentUser User?   @relation("DependentUser", fields: [dependentId], references: [id])
+
+    caregiverId   String?
+    caregiverUser User?   @relation("CaregiverUser", fields: [caregiverId], references: [id])
+
+    dependentCustomName String?
+    caregiverCustomName String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@map("dependents")
+}

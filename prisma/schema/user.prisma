@@ -5,6 +5,9 @@ model User {
     email   String  @unique
     profile String? @default("")
 
+    dependents Dependent[] @relation("DependentUser")
+    caregivers Dependent[] @relation("CaregiverUser")
+
     // for business owner
     phone       String?
     dateOfBirth DateTime?
@@ -27,7 +30,6 @@ model User {
     notifications Notification[]
 
     sentMessages     Message[]      @relation("SentMessages")
-    receivedMessages Message[]      @relation("ReceivedMessages")
     conversationsAsA Conversation[] @relation("UserAConversations")
     conversationsAsB Conversation[] @relation("UserBConversations")
 

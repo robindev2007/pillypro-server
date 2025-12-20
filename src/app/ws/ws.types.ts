@@ -1,5 +1,5 @@
 export type WsMessage = {
   message: string;
-  receiverId: string;
+  conversationId: string;
   fileUrl?: string[];
 };

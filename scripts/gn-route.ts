@@ -78,8 +78,8 @@ export const update = z.object({
 
 export const ${pascalName}Validation = { create, update };
 
-export type Create${pascalName}Input = z.infer<typeof create>;
-export type Update${pascalName}Input = z.infer<typeof update>;
+export type Create${pascalName}Input = z.infer<typeof create>["body"];
+export type Update${pascalName}Input = z.infer<typeof update>["body"];
 `;
 
 const serviceTemplate = `
