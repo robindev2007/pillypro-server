@@ -51,6 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Message: 'Message',
+  Conversation: 'Conversation',
   Notification: 'Notification',
   User: 'User',
   OTP: 'OTP',
@@ -71,6 +73,33 @@ export const TransactionIsolationLevel = {
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  isRead: 'isRead',
+  files: 'files',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  conversationId: 'conversationId'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const ConversationScalarFieldEnum = {
+  id: 'id',
+  userAId: 'userAId',
+  userBId: 'userBId',
+  lastMessageAt: 'lastMessageAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
 
 
 export const NotificationScalarFieldEnum = {

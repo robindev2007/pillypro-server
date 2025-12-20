@@ -70,8 +70,6 @@ export const uploadSingle = (
   fieldName: string,
   options: UploadOptions = {}
 ) => {
-  console.log(fieldName);
-
   const {
     allowedTypes = FileTypes.ALL,
     maxSize = 5 * 1024 * 1024, // 5MB default

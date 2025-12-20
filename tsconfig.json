@@ -34,5 +34,6 @@
       "@/env": ["./src/config/env.ts"],
       "@/prisma/*": ["./prisma/*"]
     }
-  }
+  },
+  "include": ["src", "types"]
 }

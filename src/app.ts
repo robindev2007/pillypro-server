@@ -1,14 +1,15 @@
 // app.ts
+import { apiReference } from "@scalar/express-api-reference";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import express from "express";
 import env from "./config/env";
 import httpStatus from "./constant/httpStatus";
-import { prisma } from "./lib/db";
 import { attachUser } from "./middleware/auth.middleware";
 import errorMiddleware from "./middleware/error.middleware";
 import fancyLogger from "./middleware/logger.middleware";
 import routes from "./routes";
+import { generatePostmanDoc } from "./utils/generatePostmanDoc";
 
 const app = express();
 
@@ -41,15 +42,25 @@ if (env.NODE_ENV === "development") {
 
 // 4. Global middleware to attach user data if token exists (optional)
 app.use(attachUser);
+app.use(
+  "/reference",
+  apiReference({
+    theme: "purple",
+    url: "http://localhost:5001/zod",
+  })
+);
+
+app.get("/zod", async (req, res) => {
+  const dock = await generatePostmanDoc();
+
+  return res.json(dock);
+});
 
 // 5. Routes
 app.get("/", async (req, res) => {
-  const data = await prisma.user.findMany();
-
   res.json({
     status: "success",
-    message: "Welcome to the LIPBROW_LASH API",
-    data,
+    message: `Welcome to the ${env.PROJECT_NAME} API`,
   });
 });
 

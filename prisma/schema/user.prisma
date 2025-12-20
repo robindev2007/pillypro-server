@@ -26,6 +26,11 @@ model User {
     expiredTokens ExpiredTokens[]
     notifications Notification[]
 
+    sentMessages     Message[]      @relation("SentMessages")
+    receivedMessages Message[]      @relation("ReceivedMessages")
+    conversationsAsA Conversation[] @relation("UserAConversations")
+    conversationsAsB Conversation[] @relation("UserBConversations")
+
     @@index([email])
     @@index([role])
     @@index([isAccountVerified])

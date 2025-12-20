@@ -1,8 +1,8 @@
 import env from "@/config/env";
 import httpStatus from "@/constant/httpStatus";
-import { USER_ROLE_ENUM } from "@/generated/enums";
 import AppError from "@/helpers/AppError";
 import { prisma } from "@/lib/db";
+import { USER_ROLE_ENUM } from "@/prisma/generated/enums";
 import jwt from "jsonwebtoken";
 
 export interface JwtPayload {

@@ -2,7 +2,6 @@ import env from "@/config/env";
 import httpStatus from "@/constant/httpStatus";
 import AppError from "@/helpers/AppError";
 import { insecurePrisma, prisma } from "@/lib/db";
-import { USER_ROLE_ENUM } from "@/prisma/generated/enums";
 import {
   sendAccountVerifiedEmail,
   sendPasswordChangedEmail,
@@ -62,16 +61,8 @@ const signUp = async (payload: SignUpInput) => {
           where: { id: emailExist.id },
           data: {
             name: payload.name,
-            location: payload.location,
             isAgreeWithTerms: payload.isAgreeWithTerms,
             passwordHashed: hashedPassword,
-            phone: payload.phone,
-            dateOfBirth: payload.dateOfBirth,
-            companyName: payload.companyName,
-
-            role: payload.isBusinessAccount
-              ? USER_ROLE_ENUM.BUSINESS_OWNER
-              : USER_ROLE_ENUM.USER,
           },
         }),
         prisma.oTP.create({
@@ -92,10 +83,6 @@ const signUp = async (payload: SignUpInput) => {
         name: updatedUser.name,
         isAccountVerified: updatedUser.isAccountVerified,
         role: updatedUser.role,
-        phone: payload.phone,
-        dateOfBirth: payload.dateOfBirth,
-        companyName: payload.companyName,
-        isBusinessAccount: payload.isBusinessAccount,
         message: "Please check your email for verification code",
         ...(env.isDevelopment && { otp }), // Include OTP in dev mode
       };
@@ -111,15 +98,8 @@ const signUp = async (payload: SignUpInput) => {
     data: {
       email: payload.email,
       name: payload.name,
-      location: payload.location,
       isAgreeWithTerms: payload.isAgreeWithTerms,
       passwordHashed: hashedPassword,
-      dateOfBirth: payload.dateOfBirth,
-      phone: payload.phone,
-      companyName: payload.companyName,
-      role: payload.isBusinessAccount
-        ? USER_ROLE_ENUM.BUSINESS_OWNER
-        : USER_ROLE_ENUM.USER,
     },
   });
 

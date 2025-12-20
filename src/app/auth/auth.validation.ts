@@ -6,53 +6,19 @@ import z from "zod";
 const signUpSchema = z.object({
   body: z
     .object({
+      name: z
+        .string()
+        .min(2, "Name must be at least 2 characters")
+        .max(100, "Name must not exceed 100 characters"),
       email: z.email("Invalid email format"),
       password: z
         .string()
         .min(6, "Password must be at least 6 characters")
         .max(50, "Password must not exceed 50 characters"),
-      name: z
-        .string()
-        .min(2, "Name must be at least 2 characters")
-        .max(100, "Name must not exceed 100 characters"),
-      location: z.object({
-        latitude: z.number(),
-        longitude: z.number(),
-      }),
+
       isAgreeWithTerms: z.boolean().refine((val) => val === true, {
         message: "You must agree to the terms and conditions",
       }),
-
-      // Business Account
-      isBusinessAccount: z.boolean().optional(),
-      phone: z.string().optional(),
-      dateOfBirth: z.coerce.date().optional(),
-      companyName: z.string().optional(),
-    })
-    .superRefine((data, ctx) => {
-      if (data.isBusinessAccount) {
-        if (!data.phone) {
-          ctx.addIssue({
-            code: "custom",
-            message: "Phone is required for business accounts",
-            path: ["phone"],
-          });
-        }
-        if (!data.dateOfBirth) {
-          ctx.addIssue({
-            code: "custom",
-            message: "Date of birth is required for business accounts",
-            path: ["dateOfBirth"],
-          });
-        }
-        if (!data.companyName) {
-          ctx.addIssue({
-            code: "custom",
-            message: "Company name is required for business accounts",
-            path: ["companyName"],
-          });
-        }
-      }
     })
     .strict(),
 });

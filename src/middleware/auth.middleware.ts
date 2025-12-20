@@ -1,8 +1,8 @@
 import httpStatus from "@/constant/httpStatus";
-import { USER_ROLE_ENUM } from "@/generated/enums";
 import AppError from "@/helpers/AppError";
 import handleController from "@/helpers/handleController";
 import { prisma } from "@/lib/db";
+import { USER_ROLE_ENUM } from "@/prisma/generated/enums";
 import { extractTokenFromHeader, verifyAccessToken } from "@/utils/jwt";
 import chalk from "chalk";
 import type { NextFunction, Request, Response } from "express";
@@ -167,11 +167,6 @@ export const attachUser = async (
           id: true,
           email: true,
           role: true,
-          businesses: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
 

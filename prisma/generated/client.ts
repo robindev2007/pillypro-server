@@ -29,8 +29,8 @@ export * from "./enums.js"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Notifications
- * const notifications = await prisma.notification.findMany()
+ * // Fetch zero or more Messages
+ * const messages = await prisma.message.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,6 +39,16 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
+/**
+ * Model Message
+ * 
+ */
+export type Message = Prisma.MessageModel
+/**
+ * Model Conversation
+ * 
+ */
+export type Conversation = Prisma.ConversationModel
 /**
  * Model Notification
  * 

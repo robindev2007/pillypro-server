@@ -383,22 +383,6 @@ export type NotificationOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type NotificationCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.NotificationCreateWithoutUserInput, Prisma.NotificationUncheckedCreateWithoutUserInput> | Prisma.NotificationCreateWithoutUserInput[] | Prisma.NotificationUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.NotificationCreateOrConnectWithoutUserInput | Prisma.NotificationCreateOrConnectWithoutUserInput[]
