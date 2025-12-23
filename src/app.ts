@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import env from "./config/env";
 import httpStatus from "./constant/httpStatus";
+import { prisma } from "./lib/db";
 import { attachUser } from "./middleware/auth.middleware";
 import errorMiddleware from "./middleware/error.middleware";
 import fancyLogger from "./middleware/logger.middleware";
@@ -58,9 +59,39 @@ app.get("/zod", async (req, res) => {
 
 // 5. Routes
 app.get("/", async (req, res) => {
+  const data = await prisma.medicineHistory.createMany({
+    data: [
+      {
+        userId: "cmje4554s0000zov6uk8ztmbt",
+        slotId: "cmjh07j3600006gv6st3a6hpq",
+        status: "PENDING",
+        slotTime: "09:00 AM",
+      },
+      {
+        userId: "cmje4554s0000zov6uk8ztmbt",
+        slotId: "cmjh07j3600006gv6st3a6hpq",
+        status: "PENDING",
+        slotTime: "02:00 AM",
+      },
+      {
+        userId: "cmje4554s0000zov6uk8ztmbt",
+        slotId: "cmjh07j3600006gv6st3a6hpq",
+        status: "PENDING",
+        slotTime: "01:00 PM",
+      },
+      {
+        userId: "cmje4554s0000zov6uk8ztmbt",
+        slotId: "cmjh07j3600006gv6st3a6hpq",
+        status: "PENDING",
+        slotTime: "05:00 AM",
+      },
+    ],
+  });
+
   res.json({
     status: "success",
     message: `Welcome to the ${env.PROJECT_NAME} API`,
+    data,
   });
 });
 

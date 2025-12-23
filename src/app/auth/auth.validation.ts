@@ -44,6 +44,23 @@ const loginSchema = z.object({
     email: z.email("Invalid email format"),
     password: z.string().min(1, "Password is required"),
     fcmToken: z.string().optional(),
+    timeZone: z.string().refine(
+      (tz) => {
+        if (!tz) return true; // Valid if missing
+        if (tz === "UTC" || tz === "GMT") return true;
+
+        const gmtRegex = /^GMT[+-]\d{2}:\d{2}$/;
+        if (gmtRegex.test(tz)) return true;
+
+        try {
+          Intl.DateTimeFormat(undefined, { timeZone: tz });
+          return true;
+        } catch (e) {
+          return false;
+        }
+      },
+      { message: "TimeZone has an invalid value or incorrect format." }
+    ),
   }),
 });
 

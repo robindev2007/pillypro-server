@@ -2,14 +2,14 @@ import { z } from "zod";
 
 export const create = z.object({
   body: z.object({
-    dependentCustomName: z.string().min(1).max(255).optional(),
+    dependentCustomName: z.string().max(255).optional(),
     dependentEmail: z.email(),
   }),
 });
 
 export const update = z.object({
   body: z.object({
-    dependentCustomName: z.string().min(1).max(255).optional(),
+    dependentCustomName: z.string().max(255).optional(),
     caregiverCustomName: z.string().min(1).max(255).optional(),
   }),
 });

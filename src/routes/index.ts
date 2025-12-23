@@ -5,6 +5,7 @@ import { UsersRoutes } from "../app/users/users.route";
 
 import { DependentRoutes } from "@/app/dependent/dependent.route";
 import { DoseRoutes } from "@/app/dose/dose.route";
+import { MedicineHistoryRoutes } from "@/app/medicine-history/medicine-history.route";
 import express from "express";
 const routes = express();
 
@@ -32,6 +33,11 @@ const routeModules: RouteModule = [
   {
     path: "/doses",
     route: DoseRoutes,
+  },
+
+  {
+    path: "/medicine-history",
+    route: MedicineHistoryRoutes,
   },
 ];
 

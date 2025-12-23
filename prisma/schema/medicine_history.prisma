@@ -1,0 +1,23 @@
+model MedicineHistory {
+    id     String @id @default(cuid())
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    slotId      String
+    slot        MedicineSlot          @relation(fields: [slotId], references: [id], onDelete: Cascade)
+    status      MedicineHistoryStatus
+    slotTime    String
+    doseTakenAt DateTime?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId, slotId])
+    @@map("medicine_histories")
+}
+
+enum MedicineHistoryStatus {
+    TAKEN
+    MISSED
+    PENDING
+}

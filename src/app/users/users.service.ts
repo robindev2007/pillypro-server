@@ -2,6 +2,7 @@ import httpStatus from "@/constant/httpStatus";
 import AppError from "@/helpers/AppError";
 import { executePaginatedQuery } from "@/helpers/pagination";
 import { prisma } from "@/lib/db";
+import { UserSelect } from "@/prisma/generated/models";
 import { FileUploadService } from "@/services/fileUpload";
 import type { Request } from "express";
 import type { UpdateProfileInput } from "./users.validation";
@@ -10,7 +11,7 @@ import type { UpdateProfileInput } from "./users.validation";
  * Get all users with pagination and filters (SUPER_ADMIN only)
  */
 const getAllUsers = async (req: Request) => {
-  return executePaginatedQuery(
+  return executePaginatedQuery<any, UserSelect>(
     req,
     prisma.user,
     {
@@ -32,6 +33,7 @@ const getAllUsers = async (req: Request) => {
       isAccountVerified: true,
       createdAt: true,
       updatedAt: true,
+      dependents: true,
     }
   );
 };

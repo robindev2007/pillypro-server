@@ -18,13 +18,12 @@ const getAll = handleController(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     message: "Doses retrieved successfully",
-    meta: result.meta,
-    data: result.data,
+    ...result,
   });
 });
 
 const getOne = handleController(async (req: Request, res: Response) => {
-  const result = await DoseService.getDoseById(req.params.id!);
+  const result = await DoseService.getDoseById(req.user.userId, req.params.id!);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     message: "Dose retrieved successfully",

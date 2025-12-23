@@ -1,0 +1,2139 @@
+{
+	"info": {
+		"_postman_id": "63bc3b47-9556-42aa-a319-8e3a5be54b57",
+		"name": "Pilly_Pro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47153288"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Update Me",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile",
+									"type": "file",
+									"src": "/C:/Users/ashan/Downloads/mountains fsadf .webp"
+								},
+								{
+									"key": "data",
+									"value": "{\n\n    \"name\": \"John Doe  sdf\"\n    \n\n}\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_API}}/users/me",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_ACCESS_TOKEN2}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlzZG40czcwMDAwZWt2NnM2czJ3N3AwIiwiZW1haWwiOiJidXNuZXNzQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0OTE0MzAwLCJleHAiOjE3NjYyMTAzMDB9.E1CgRe_NSPE9Hr9Jmn1D032vJGpgXIcxl_12AIzOPSM\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API}}/users/me",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlzZG40czcwMDAwZWt2NnM2czJ3N3AwIiwiZW1haWwiOiJidXNuZXNzQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0OTE0MzAwLCJleHAiOjE3NjYyMTAzMDB9.E1CgRe_NSPE9Hr9Jmn1D032vJGpgXIcxl_12AIzOPSM\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API}}/users",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "cmis8vffl00",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlzZG40czcwMDAwZWt2NnM2czJ3N3AwIiwiZW1haWwiOiJidXNuZXNzQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0OTE0MzAwLCJleHAiOjE3NjYyMTAzMDB9.E1CgRe_NSPE9Hr9Jmn1D032vJGpgXIcxl_12AIzOPSM\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API}}/users/me",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "OTP",
+					"item": [
+						{
+							"name": "Sign Up",
+							"item": [
+								{
+									"name": "Sign Up",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"name\": \"User Account1\",\r\n  \r\n    \"isAgreeWithTerms\": true\r\n   \r\n   \r\n   \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/signup",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Verify Account",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n     \"otp\": \"8208\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/verify-email",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"verify-email"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Otp",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\": \"teast@exaample.com\",\r\n    \"otp\": \"8098\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/verify-email",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"verify-email"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:41:09 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "566"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"236-cP74T5rtnvQxPhalCX+ybuVqUqI\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"success\": false,\n    \"statusCode\": 400,\n    \"message\": \"Invalid or expired OTP. Please request a new one.\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Invalid or expired OTP. Please request a new one.\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\app\\\\auth\\\\auth.service.ts:131:15)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"email\": \"teast@exaample.com\",\n        \"otp\": \"8098\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/verify-email\",\n    \"requestMethod\": \"POST\"\n}"
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\": \"teast@exaample.com\",\r\n    \"otp\": \"1519\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/verify-email",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"verify-email"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:42:08 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "674"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"2a2-1fmbnlmDYYVCHS1rl/M/Wq0xaIo\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Email verified successfully\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"cmird63ug0002nsv6f0grt7i6\",\n            \"email\": \"teast@exaample.com\",\n            \"name\": \"John Doe\",\n            \"isAccountVerified\": true\n        },\n        \"tokens\": {\n            \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZDYzdWcwMDAybnN2NmYwZ3J0N2k2IiwiZW1haWwiOiJ0ZWFzdEBleGFhbXBsZS5jb20iLCJpYXQiOjE3NjQ4NDg1MjgsImV4cCI6MTc2NDg0OTcyOH0.er60oZKolRxKnff4scogHo66TSdRdd6wA0YtvEnBZac\",\n            \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZDYzdWcwMDAybnN2NmYwZ3J0N2k2IiwiZW1haWwiOiJ0ZWFzdEBleGFhbXBsZS5jb20iLCJpYXQiOjE3NjQ4NDg1MjgsImV4cCI6MTc2NjE0NDUyOH0.J36-EvzoYLSraHWNImFR_u2XBnSMxs9finWugV0WWZ0\"\n        }\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Resent OTP",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"user@gmail.com\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/resend-otp",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"resend-otp"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\": \"testuser@example.com\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/resend-otp",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"resend-otp"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:47:50 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "115"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"73-Hf0TVKPIR5Cgwk41BGCokkAtFKI\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"OTP sent successfully. Please check your email.\",\n    \"data\": {\n        \"otp\": \"2759\"\n    }\n}"
+										},
+										{
+											"name": "User Not Found",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\": \"testuaser@example.com\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/resend-otp",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"resend-otp"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:48:08 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "484"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"1e4-E0uY3jmQrJjeK/YwhQKIDVhi3rk\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"success\": false,\n    \"statusCode\": 404,\n    \"message\": \"User not found\",\n    \"errorDetails\": {\n        \"stack\": \"Error: User not found\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\app\\\\auth\\\\auth.service.ts:359:15)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"email\": \"testuaser@example.com\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/resend-otp\",\n    \"requestMethod\": \"POST\"\n}"
+										},
+										{
+											"name": "Verified",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\": \"user@gmail.com\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/resend-otp",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"resend-otp"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:48:32 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "503"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"1f7-Ag9kIASbVxv/MkzA5NZ+MvkgESs\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"success\": false,\n    \"statusCode\": 400,\n    \"message\": \"Account is already verified\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Account is already verified\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\app\\\\auth\\\\auth.service.ts:363:15)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"email\": \"user@gmail.com\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/resend-otp\",\n    \"requestMethod\": \"POST\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Forgot Password",
+							"item": [
+								{
+									"name": "Request Forgot Password",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"busness@example.com\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/forgot-password",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"forgot-password"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\": \"busness@example.com\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/forgot-password",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"forgot-password"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Fri, 05 Dec 2025 05:29:34 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "130"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"82-nr6VmZF3XP+c06wpymzrdNZ7Zcg\""
+												},
+												{
+													"key": "Vary",
+													"value": "Accept-Encoding"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "RateLimit-Policy",
+													"value": "8;w=300"
+												},
+												{
+													"key": "RateLimit-Limit",
+													"value": "8"
+												},
+												{
+													"key": "RateLimit-Remaining",
+													"value": "7"
+												},
+												{
+													"key": "RateLimit-Reset",
+													"value": "300"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Password reset OTP sent successfully. Please check your email.\",\n    \"data\": {\n        \"otp\": \"5507\"\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Verify OTP",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"busness@example.com\",\r\n    \"otp\": \"0916\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/verify-forgot-password-otp",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"verify-forgot-password-otp"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\":\"user@gmail.com\",\r\n    \"otp\":\"5864\",\r\n    \"newPassword\":\"123456\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/reset-password",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"reset-password"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:56:05 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "111"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"6f-LnP5pbI3RJL4+ulrI8SNHnMtjCk\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Password reset successfully. Please login with your new password.\"\n}"
+										},
+										{
+											"name": "Error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\":\"user@gmail.com\",\r\n    \"otp\":\"5864\",\r\n    \"newPassword\":\"123456\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/reset-password",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"reset-password"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:58:27 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "587"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"24b-zM7jT3O4jcVWNmaVUeymtahkXLY\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"success\": false,\n    \"statusCode\": 400,\n    \"message\": \"Invalid or expired OTP. Please request a new one.\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Invalid or expired OTP. Please request a new one.\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\app\\\\auth\\\\auth.service.ts:457:15)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"email\": \"user@gmail.com\",\n        \"otp\": \"5864\",\n        \"newPassword\": \"123456\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/reset-password\",\n    \"requestMethod\": \"POST\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Set New Password",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlzZG40czcwMDAwZWt2NnM2czJ3N3AwIiwiZW1haWwiOiJidXNuZXNzQGV4YW1wbGUuY29tIiwicHVycG9zZSI6InBhc3N3b3JkLXJlc2V0IiwiaWF0IjoxNzY1MDE3MDc5LCJleHAiOjE3NjUwMTc5Nzl9.wGgoyZGGp2_9i5z5dDoZn3jJKtsGery6_EP2vxTGXBc",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"newPassword\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/reset-password",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"reset-password"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\":\"user@gmail.com\",\r\n    \"otp\":\"5864\",\r\n    \"newPassword\":\"123456\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/reset-password",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"reset-password"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:56:05 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "111"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"6f-LnP5pbI3RJL4+ulrI8SNHnMtjCk\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Password reset successfully. Please login with your new password.\"\n}"
+										},
+										{
+											"name": "Error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"email\":\"user@gmail.com\",\r\n    \"otp\":\"5864\",\r\n    \"newPassword\":\"123456\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{BASE_API}}/auth/otp/reset-password",
+													"host": [
+														"{{BASE_API}}"
+													],
+													"path": [
+														"auth",
+														"otp",
+														"reset-password"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 04 Dec 2025 11:58:27 GMT"
+												},
+												{
+													"key": "Content-Length",
+													"value": "587"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"24b-zM7jT3O4jcVWNmaVUeymtahkXLY\""
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"success\": false,\n    \"statusCode\": 400,\n    \"message\": \"Invalid or expired OTP. Please request a new one.\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Invalid or expired OTP. Please request a new one.\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\app\\\\auth\\\\auth.service.ts:457:15)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"email\": \"user@gmail.com\",\n        \"otp\": \"5864\",\n        \"newPassword\": \"123456\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/reset-password\",\n    \"requestMethod\": \"POST\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(\"Raw response:\", pm.response.text());",
+											"",
+											"const jsonData = pm.response.json();",
+											"console.log(\"Parsed JSON:\", jsonData);",
+											"",
+											"// Check if jsonData.data exists",
+											"if (!jsonData.data) {",
+											"    console.log(\"ERROR: jsonData.data is missing!\");",
+											"}",
+											"",
+											"// Extract user & tokens",
+											"const user = jsonData.data?.user;",
+											"const tokens = jsonData.data?.tokens;",
+											"",
+											"console.log(\"User object:\", user);",
+											"console.log(\"Tokens object:\", tokens);",
+											"",
+											"// Extract role",
+											"const role = user?.role;",
+											"console.log(\"Role:\", role);",
+											"",
+											"// Tokens",
+											"const accessToken = tokens?.accessToken;",
+											"const refreshToken = tokens?.refreshToken;",
+											"",
+											"console.log(\"Access Token:\", accessToken);",
+											"console.log(\"Refresh Token:\", refreshToken);",
+											"",
+											"// Save role",
+											"pm.environment.set(\"userRole\", role);",
+											"",
+											"// Save tokens based on role",
+											"if (role === \"USER\") {",
+											"    pm.environment.set(\"USER_ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"USER token saved\");",
+											"} else if (role === \"SUPER_ADMIN\") {",
+											"    pm.environment.set(\"ADMIN_ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"ADMIN token saved\");",
+											"} else if (role === \"BUSINES\") {",
+											"    pm.environment.set(\"BUSINESS_ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"BUSINESS token saved\");",
+											"} else {",
+											"    pm.environment.set(\"ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"DEFAULT token saved\");",
+											"}",
+											"",
+											"// Save general",
+											"pm.environment.set(\"accessToken\", accessToken);",
+											"console.log(\"General accessToken saved:\", accessToken);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "USER_ACCESS_TOKEN",
+										"value": "{{USER_ACCESS_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"fcmToken\":\"sdafs\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_API}}/auth/otp/login",
+									"host": [
+										"{{BASE_API}}"
+									],
+									"path": [
+										"auth",
+										"otp",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login User2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(\"Raw response:\", pm.response.text());",
+											"",
+											"const jsonData = pm.response.json();",
+											"console.log(\"Parsed JSON:\", jsonData);",
+											"",
+											"// Check if jsonData.data exists",
+											"if (!jsonData.data) {",
+											"    console.log(\"ERROR: jsonData.data is missing!\");",
+											"}",
+											"",
+											"// Extract user & tokens",
+											"const user = jsonData.data?.user;",
+											"const tokens = jsonData.data?.tokens;",
+											"",
+											"console.log(\"User object:\", user);",
+											"console.log(\"Tokens object:\", tokens);",
+											"",
+											"// Extract role",
+											"const role = user?.role;",
+											"console.log(\"Role:\", role);",
+											"",
+											"// Tokens",
+											"const accessToken = tokens?.accessToken;",
+											"const refreshToken = tokens?.refreshToken;",
+											"",
+											"console.log(\"Access Token:\", accessToken);",
+											"console.log(\"Refresh Token:\", refreshToken);",
+											"",
+											"// Save role",
+											"pm.environment.set(\"userRole\", role);",
+											"",
+											"// Save tokens based on role",
+											"if (role === \"USER\") {",
+											"    pm.environment.set(\"USER_ACCESS_TOKEN2\", accessToken);",
+											"    console.log(\"USER token saved\");",
+											"} else if (role === \"SUPER_ADMIN\") {",
+											"    pm.environment.set(\"ADMIN_ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"ADMIN token saved\");",
+											"} else if (role === \"BUSINES\") {",
+											"    pm.environment.set(\"BUSINESS_ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"BUSINESS token saved\");",
+											"} else {",
+											"    pm.environment.set(\"ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"DEFAULT token saved\");",
+											"}",
+											"",
+											"// Save general",
+											"pm.environment.set(\"accessToken\", accessToken);",
+											"console.log(\"General accessToken saved:\", accessToken);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "USER_ACCESS_TOKEN",
+										"value": "{{USER_ACCESS_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"fcmToken\":\"sdafs\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_API}}/auth/otp/login",
+									"host": [
+										"{{BASE_API}}"
+									],
+									"path": [
+										"auth",
+										"otp",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(\"Raw response:\", pm.response.text());",
+											"",
+											"const jsonData = pm.response.json();",
+											"console.log(\"Parsed JSON:\", jsonData);",
+											"",
+											"// Check if jsonData.data exists",
+											"if (!jsonData.data) {",
+											"    console.log(\"ERROR: jsonData.data is missing!\");",
+											"}",
+											"",
+											"// Extract user & tokens",
+											"const user = jsonData.data?.user;",
+											"const tokens = jsonData.data?.tokens;",
+											"",
+											"console.log(\"User object:\", user);",
+											"console.log(\"Tokens object:\", tokens);",
+											"",
+											"// Extract role",
+											"const role = user?.role;",
+											"console.log(\"Role:\", role);",
+											"",
+											"// Tokens",
+											"const accessToken = tokens?.accessToken;",
+											"const refreshToken = tokens?.refreshToken;",
+											"",
+											"console.log(\"Access Token:\", accessToken);",
+											"console.log(\"Refresh Token:\", refreshToken);",
+											"",
+											"// Save role",
+											"pm.environment.set(\"userRole\", role);",
+											"",
+											"// Save tokens based on role",
+											"if (role === \"USER\") {",
+											"    pm.environment.set(\"USER_ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"USER token saved\");",
+											"} else if (role === \"SUPER_ADMIN\") {",
+											"    pm.environment.set(\"ADMIN_ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"ADMIN token saved\");",
+											"} else {",
+											"    pm.environment.set(\"ACCESS_TOKEN\", accessToken);",
+											"    console.log(\"DEFAULT token saved\");",
+											"}",
+											"",
+											"// Save general",
+											"pm.environment.set(\"accessToken\", accessToken);",
+											"console.log(\"General accessToken saved:\", accessToken);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "USER_ACCESS_TOKEN",
+										"value": "{{USER_ACCESS_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_API}}/auth/otp/login",
+									"host": [
+										"{{BASE_API}}"
+									],
+									"path": [
+										"auth",
+										"otp",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Wrong Password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"user2@gmail.com\",\r\n    \"password\": \"taronfgP@ssw0rd123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/login",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"login"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 11:45:04 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "527"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"20f-7Sw7WdaR/ka9kGTi5eE3G8TBIJY\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"statusCode\": 401,\n    \"message\": \"Invalid email or password\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Invalid email or password\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\app\\\\auth\\\\auth.service.ts:200:15)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"email\": \"user2@gmail.com\",\n        \"password\": \"taronfgP@ssw0rd123\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/login\",\n    \"requestMethod\": \"POST\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"user@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/login",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 11:45:36 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "689"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2b1-2IuuUyAu7x4f6GBOj9jMQHfczQ4\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"cmirdbx8w0000dcv6i1ijsoy3\",\n            \"email\": \"user@gmail.com\",\n            \"name\": \"John Doe\",\n            \"profile\": \"\",\n            \"location\": \"New York, USA\",\n            \"isAccountVerified\": true\n        },\n        \"tokens\": {\n            \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg0ODczNiwiZXhwIjoxNzY0ODQ5OTM2fQ.JLEZJI3672AkkNlAFgYr8Fu9YH6Q-fD2pTsps7FtN1k\",\n            \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg0ODczNiwiZXhwIjoxNzY2MTQ0NzM2fQ.ZjxkftHikRPOjKRB5U7NULLbm38E6Hqu1vnNKzdfpWA\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_ACCESS_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currentPassword\":\"123456\",\r\n    \"newPassword\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_API}}/auth/otp/change-password",
+									"host": [
+										"{{BASE_API}}"
+									],
+									"path": [
+										"auth",
+										"otp",
+										"change-password"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"currentPassword\":\"123456\",\r\n    \"newPassword\":\"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/change-password",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"change-password"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:14:44 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "76"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4c-hLcqW/Yo8VAEnKD6LHUl3nXKcWQ\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Password changed successfully.\"\n}"
+								},
+								{
+									"name": "Wrong Password",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"currentPassword\":\"23456\",\r\n    \"newPassword\":\"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/change-password",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"change-password"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:15:08 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "536"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"218-7n81M+kDowshGHrE9v3T0XSr5ig\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"statusCode\": 401,\n    \"message\": \"Current password is incorrect\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Current password is incorrect\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\app\\\\auth\\\\auth.service.ts:327:15)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"currentPassword\": \"23456\",\n        \"newPassword\": \"123456\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/change-password\",\n    \"requestMethod\": \"POST\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Refresh Access Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_ACCESS_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlzZG40czcwMDAwZWt2NnM2czJ3N3AwIiwiZW1haWwiOiJidXNuZXNzQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0OTE0MzAwLCJleHAiOjE3NjYyMTAzMDB9.E1CgRe_NSPE9Hr9Jmn1D032vJGpgXIcxl_12AIzOPSM\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_API}}/auth/otp/refresh-token",
+									"host": [
+										"{{BASE_API}}"
+									],
+									"path": [
+										"auth",
+										"otp",
+										"refresh-token"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"refreshToken\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/refresh-token",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"refresh-token"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:16:23 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "480"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1e0-HSKqcYoLgYD9KS7fUYfaEkIXyd0\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"statusCode\": 401,\n    \"message\": \"Invalid refresh token\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Invalid refresh token\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\utils\\\\jwt.ts:112:17)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"refreshToken\": \"123456\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/refresh-token\",\n    \"requestMethod\": \"POST\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDExNCwiZXhwIjoxNzY2MTQ2MTE0fQ.IFb6phXgLf61fZ_8G7TleQnREb7fZeMAcA1swUC-Kh0\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/refresh-token",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"refresh-token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:16:50 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "540"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21c-ZQSPCsqv2kev6wG/Ge/30lmE4VA\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Token refreshed successfully\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDYxMCwiZXhwIjoxNzY0ODUxODEwfQ.yWLj_jD7WhmpZFDvC8Ou-avIlK80ZzyeFHpr44X4zrY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDYxMCwiZXhwIjoxNzY2MTQ2NjEwfQ.1CV6ETsxUVV51UVBk63ZXnYgJrkAviqc17KPki5yq88\"\n    }\n}"
+								},
+								{
+									"name": "Revocked",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDExNCwiZXhwIjoxNzY2MTQ2MTE0fQ.IFb6phXgLf61fZ_8G7TleQnREb7fZeMAcA1swUC-Kh0\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/refresh-token",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"refresh-token"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:18:35 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "768"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"300-xto5Z8MgvXIYNYr5ywAS9gwJHzI\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"statusCode\": 401,\n    \"message\": \"Refresh token has been revoked. Please login again.\",\n    \"data\": {\n        \"signOut\": true\n    },\n    \"errorDetails\": {\n        \"stack\": \"Error: Refresh token has been revoked. Please login again.\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\utils\\\\jwt.ts:96:17)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDExNCwiZXhwIjoxNzY2MTQ2MTE0fQ.IFb6phXgLf61fZ_8G7TleQnREb7fZeMAcA1swUC-Kh0\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/refresh-token\",\n    \"requestMethod\": \"POST\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Refresh Access Token Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{USER_ACCESS_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_API}}/auth/otp/logout-all-devices",
+									"host": [
+										"{{BASE_API}}"
+									],
+									"path": [
+										"auth",
+										"otp",
+										"logout-all-devices"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"refreshToken\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/refresh-token",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"refresh-token"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:16:23 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "480"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1e0-HSKqcYoLgYD9KS7fUYfaEkIXyd0\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"statusCode\": 401,\n    \"message\": \"Invalid refresh token\",\n    \"errorDetails\": {\n        \"stack\": \"Error: Invalid refresh token\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\utils\\\\jwt.ts:112:17)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"refreshToken\": \"123456\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/refresh-token\",\n    \"requestMethod\": \"POST\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDExNCwiZXhwIjoxNzY2MTQ2MTE0fQ.IFb6phXgLf61fZ_8G7TleQnREb7fZeMAcA1swUC-Kh0\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/refresh-token",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"refresh-token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:16:50 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "540"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21c-ZQSPCsqv2kev6wG/Ge/30lmE4VA\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Token refreshed successfully\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDYxMCwiZXhwIjoxNzY0ODUxODEwfQ.yWLj_jD7WhmpZFDvC8Ou-avIlK80ZzyeFHpr44X4zrY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDYxMCwiZXhwIjoxNzY2MTQ2NjEwfQ.1CV6ETsxUVV51UVBk63ZXnYgJrkAviqc17KPki5yq88\"\n    }\n}"
+								},
+								{
+									"name": "Revocked",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{USER_ACCESS_TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDExNCwiZXhwIjoxNzY2MTQ2MTE0fQ.IFb6phXgLf61fZ_8G7TleQnREb7fZeMAcA1swUC-Kh0\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_API}}/auth/otp/refresh-token",
+											"host": [
+												"{{BASE_API}}"
+											],
+											"path": [
+												"auth",
+												"otp",
+												"refresh-token"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 04 Dec 2025 12:18:35 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "768"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"300-xto5Z8MgvXIYNYr5ywAS9gwJHzI\""
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"statusCode\": 401,\n    \"message\": \"Refresh token has been revoked. Please login again.\",\n    \"data\": {\n        \"signOut\": true\n    },\n    \"errorDetails\": {\n        \"stack\": \"Error: Refresh token has been revoked. Please login again.\\n    at new AppError (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\helpers\\\\AppError.ts:13:5)\\n    at <anonymous> (P:\\\\SMT-TEAM_BINARY\\\\LIPBROW_LASH\\\\bun-express\\\\src\\\\utils\\\\jwt.ts:96:17)\\n    at processTicksAndRejections (native:7:39)\"\n    },\n    \"requestBody\": {\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlyZGJ4OHcwMDAwZGN2NmkxaWpzb3kzIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTc2NDg1MDExNCwiZXhwIjoxNzY2MTQ2MTE0fQ.IFb6phXgLf61fZ_8G7TleQnREb7fZeMAcA1swUC-Kh0\"\n    },\n    \"requestPath\": \"/api/v1/auth/otp/refresh-token\",\n    \"requestMethod\": \"POST\"\n}"
+								}
+							]
+						},
+						{
+							"name": "SignOut",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"fcmToken\":\"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_API}}/auth/otp/logout",
+									"host": [
+										"{{BASE_API}}"
+									],
+									"path": [
+										"auth",
+										"otp",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "dependent",
+			"item": [
+				{
+					"name": "Add Dependent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dependentEmail\": \"user1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API}}/dependents",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"dependents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dependentEmail\": \"user1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API}}/dependents/",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"dependents",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Dependent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API}}/dependents/33373b5a-a2b0-491c-a1af-01f4e614d0e2",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"dependents",
+								"33373b5a-a2b0-491c-a1af-01f4e614d0e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_API}}/dependents?myRole=DEPENDENT",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"dependents"
+							],
+							"query": [
+								{
+									"key": "myRole",
+									"value": "DEPENDENT",
+									"description": "DEPENDENT|| CAREGIVER"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Get Dependents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_API}}/dependents?myRole=DEPENDENT",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"dependents"
+							],
+							"query": [
+								{
+									"key": "myRole",
+									"value": "DEPENDENT"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dose",
+			"item": [
+				{
+					"name": "Create Dose",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_API}}/doses",
+							"host": [
+								"{{BASE_API}}"
+							],
+							"path": [
+								"doses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_API",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

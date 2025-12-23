@@ -111,30 +111,38 @@ const createDependent = async (
   userId: string,
   payload: CreateDependentInput
 ) => {
-  const dependentUser = await prisma.user.findFirst({
+  const caregiverData = await prisma.user.findFirst({
     where: {
       email: payload.dependentEmail,
       id: { not: userId },
       isAccountVerified: true,
     },
+
     include: {
       dependents: {
         where: {
-          caregiverId: userId,
-          dependentUser: { email: payload.dependentEmail },
+          caregiverUser: { email: payload.dependentEmail },
+          dependentUser: { id: userId },
         },
       },
     },
   });
 
-  if (!dependentUser) {
+  const dependentData = await prisma.user.findFirst({
+    where: {
+      id: userId,
+      isAccountVerified: true,
+    },
+  });
+
+  if (!caregiverData || !dependentData) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
-      "Dependent user with the provided email does not exist"
+      "User with the provided email does not exist"
     );
   }
 
-  if (dependentUser.dependents.length > 0) {
+  if (caregiverData.dependents.length > 0) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
       "This user is already added as a dependent"
@@ -143,10 +151,10 @@ const createDependent = async (
 
   return prisma.dependent.create({
     data: {
-      dependentId: dependentUser.id,
-      caregiverCustomName: userId,
-      caregiverId: userId,
-      dependentCustomName: payload.dependentCustomName,
+      dependentId: userId,
+      caregiverId: caregiverData.id,
+      dependentCustomName: dependentData?.name,
+      caregiverCustomName: payload.dependentCustomName || caregiverData?.name,
     },
     select: {
       id: true,
@@ -198,8 +206,8 @@ const deleteDependent = async (userId: string, id: string) => {
       OR: [
         {
           caregiverId: userId,
-          dependentId: userId,
         },
+        { dependentId: userId },
       ],
     },
     select: { id: true },

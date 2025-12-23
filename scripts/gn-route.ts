@@ -298,17 +298,17 @@ const templates: Record<string, string> = {
     }
   }
 
-  // Write Prisma
-  if (!fs.existsSync(prismaFilePath) || overwriteAll) {
-    fs.writeFileSync(prismaFilePath, prismaTemplate);
-    console.log(
-      `${
-        fs.existsSync(prismaFilePath) ? "♻️  Overwritten" : "✅ Created"
-      }: ${prismaFilePath}`
-    );
-  } else {
-    console.log(`⚠️ Skipped: ${prismaFilePath}`);
-  }
+  // // Write Prisma
+  // if (!fs.existsSync(prismaFilePath) || overwriteAll) {
+  //   fs.writeFileSync(prismaFilePath, prismaTemplate);
+  //   console.log(
+  //     `${
+  //       fs.existsSync(prismaFilePath) ? "♻️  Overwritten" : "✅ Created"
+  //     }: ${prismaFilePath}`
+  //   );
+  // } else {
+  //   console.log(`⚠️ Skipped: ${prismaFilePath}`);
+  // }
 
   // Update routes index
   if (fs.existsSync(routesIndexPath)) {

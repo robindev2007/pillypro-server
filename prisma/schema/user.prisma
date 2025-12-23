@@ -17,7 +17,8 @@ model User {
     isDeleted Boolean  @default(false)
     fcmTokens String[] @default([])
 
-    role USER_ROLE_ENUM @default(USER)
+    role     USER_ROLE_ENUM @default(USER)
+    timeZone String         @default("UTC")
 
     passwordHashed    String
     isAgreeWithTerms  Boolean @default(true)
@@ -29,9 +30,11 @@ model User {
     expiredTokens ExpiredTokens[]
     notifications Notification[]
 
-    sentMessages     Message[]      @relation("SentMessages")
-    conversationsAsA Conversation[] @relation("UserAConversations")
-    conversationsAsB Conversation[] @relation("UserBConversations")
+    sentMessages      Message[]         @relation("SentMessages")
+    conversationsAsA  Conversation[]    @relation("UserAConversations")
+    conversationsAsB  Conversation[]    @relation("UserBConversations")
+    medicineSlots     MedicineSlot[]
+    medicineHistories MedicineHistory[]
 
     @@index([email])
     @@index([role])

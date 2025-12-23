@@ -219,6 +219,7 @@ const login = async (
       role: true,
       isDeleted: true,
       fcmTokens: true,
+      timeZone: true,
     },
   });
 
@@ -253,6 +254,13 @@ const login = async (
     userId: user.id,
     email: user.email,
   });
+
+  if (payload.timeZone && payload.timeZone !== user.timeZone) {
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { timeZone: payload.timeZone },
+    });
+  }
 
   if (user.fcmTokens) {
     const existingTokens = user.fcmTokens;

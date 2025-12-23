@@ -1,0 +1,48 @@
+model MedicineSlot {
+    id     String @id @default(cuid())
+    userId String // Connects to your User model
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    // Basic Info
+    doseName      String
+    medicineType  MedicineType
+    slotType      SlotType
+    slotColorCode String       @default("#68DEE4")
+
+    note String @default("")
+
+    // Pill Tracking
+    totalPills Int     @default(0)
+    takenPills Int     @default(0)
+    doseAmount String?
+
+    // Schedule & Timing
+    startDate     DateTime?
+    endDate       DateTime?
+    medicineTimes String[] // Stored as array of time strings (e.g., ["08:00", "20:00"])
+
+    timezone String @default("UTC")
+
+    // Status & Notifications
+    isActive            Boolean @default(true)
+    notificationEnabled Boolean @default(false)
+    notificationSent    Boolean @default(false) @map("notificationSentForCurrentSlot")
+
+    createdAt         DateTime          @default(now())
+    updatedAt         DateTime          @updatedAt
+    medicineHistories MedicineHistory[]
+
+    @@index([userId, isActive])
+    @@map("doses")
+}
+
+enum MedicineType {
+    PILL
+    CAPSULE
+}
+
+enum SlotType {
+    SMALL
+    MEDIUM
+    LARGE
+}
