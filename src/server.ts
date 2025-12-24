@@ -6,6 +6,7 @@ import env from "./config/env";
 import { seedSuperAdmin } from "./lib/db/seedAdmin";
 import { logger } from "./utils/logger";
 import { startTokenCleanupJob } from "./utils/tokenCleanup";
+import initWorkers from "./workers";
 
 const getLocalIp = (): string => {
   const interfaces = os.networkInterfaces();
@@ -42,6 +43,7 @@ async function startServer(port: number = env.PORT || 5000) {
 
     setupWebSocket(server);
     seedSuperAdmin();
+    initWorkers();
 
     const cleanupJob = startTokenCleanupJob();
 

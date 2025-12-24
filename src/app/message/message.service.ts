@@ -56,7 +56,7 @@ const getMessageById = async (id: string) => {
  * Create Message
  */
 const createMessage = async (payload: CreateMessageInput) => {
-  const conversation = await prisma.conversation.findUnique({
+  const conversation = await prisma.conversation.findFirst({
     where: { id: payload.conversationId },
     select: { id: true },
   });
@@ -124,10 +124,50 @@ const deleteMessage = async (id: string) => {
   return { message: "Message deleted successfully" };
 };
 
+const getConversationsId = async (id: string) => {
+  return prisma.conversation.findFirst({
+    where: {
+      id,
+    },
+    select: {
+      id: true,
+      userAId: true,
+      userBId: true,
+      userA: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          profile: true,
+        },
+      },
+      userB: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          profile: true,
+        },
+      },
+      messages: {
+        take: 50,
+        select: {
+          content: true,
+          senderId: true,
+          createdAt: true,
+          isRead: true,
+        },
+        orderBy: { createdAt: "desc" },
+      },
+    },
+  });
+};
+
 export const MessageService = {
   getAllMessages,
   getMessageById,
   createMessage,
   updateMessage,
   deleteMessage,
+  getConversationsId,
 };

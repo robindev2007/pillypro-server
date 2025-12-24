@@ -9,6 +9,8 @@ export function setupWebSocket(server: Server) {
   wss.on("connection", async (socket, req) => {
     const token = req.headers["authorization"] as string;
 
+    console.log({ token });
+
     let user;
 
     try {

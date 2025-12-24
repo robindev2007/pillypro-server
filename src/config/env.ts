@@ -34,6 +34,10 @@ const EnvSchema = z.object({
   BASE_URL_SERVER: z.string().url(),
 
   REDIS_URL: z.string().optional(),
+
+  REDIS_HOST: z.string().min(1, "REDIS_HOST is required"),
+  REDIS_PORT: z.coerce.number().positive().max(65535),
+  REDIS_PASSWORD: z.string().min(1, "REDIS_PASSWORD is required"),
 });
 
 // ---------------- TYPE FOR PARSED ENV ----------------

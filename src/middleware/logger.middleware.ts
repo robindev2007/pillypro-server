@@ -25,11 +25,25 @@ const fancyLogger = (options: FancyLoggerOptions = {}) => {
     // Separator line at the start
     console.log(chalk.gray("─".repeat(80)));
 
-    // Linux boot-style log entry
+    const METHOD_COLORS = {
+      GET: chalk.green,
+      POST: chalk.blue,
+      PUT: chalk.yellow,
+      PATCH: chalk.magenta,
+      DELETE: chalk.red,
+      OPTIONS: chalk.gray,
+      HEAD: chalk.cyan,
+    };
+
+    const colorMethod =
+      METHOD_COLORS[req.method as keyof typeof METHOD_COLORS] || chalk.white;
+
     console.log(
       chalk.gray(`[${timestamp}]`) +
         chalk.green(" [  OK  ] ") +
-        chalk.white(`Starting ${req.method} request to `) +
+        chalk.white("Starting ") +
+        colorMethod(req.method) +
+        chalk.white(" request to ") +
         chalk.cyan(req.originalUrl)
     );
 

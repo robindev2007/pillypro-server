@@ -273,6 +273,11 @@ const login = async (
     }
   }
 
+  await prisma.medicineSlot.updateMany({
+    where: { userId: user.id, isActive: true },
+    data: { timezone: payload.timeZone || user.timeZone },
+  });
+
   return {
     user: {
       id: user.id,

@@ -149,6 +149,13 @@ const createDependent = async (
     );
   }
 
+  await prisma.conversation.create({
+    data: {
+      userAId: userId,
+      userBId: caregiverData.id!,
+    },
+  });
+
   return prisma.dependent.create({
     data: {
       dependentId: userId,
