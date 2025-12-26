@@ -4,13 +4,19 @@ import CacheRoutes from "@/app/cache/cache.route";
 import { UsersRoutes } from "../app/users/users.route";
 
 import { DependentRoutes } from "@/app/dependent/dependent.route";
+import { DeveloperRoutes } from "@/app/developer/developer.route";
 import { DoseRoutes } from "@/app/dose/dose.route";
 import { MedicineHistoryRoutes } from "@/app/medicine-history/medicine-history.route";
 import { NotificationRoutes } from "@/app/notifications/notifications.route";
 import express from "express";
+
 const routes = express();
 
 const routeModules: RouteModule = [
+  {
+    path: "/developers",
+    route: DeveloperRoutes,
+  },
   {
     path: "/users",
     route: UsersRoutes,

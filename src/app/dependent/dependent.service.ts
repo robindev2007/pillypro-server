@@ -4,7 +4,6 @@ import { executePaginatedQuery } from "@/helpers/pagination";
 import { prisma } from "@/lib/db";
 import { DependentSelect } from "@/prisma/generated/models";
 import { FileUploadService } from "@/services/fileUpload";
-import { DefaultArgs } from "@prisma/client/runtime/client";
 import type { Request } from "express";
 import type {
   CreateDependentInput,
@@ -15,7 +14,7 @@ import type {
  * Get all Dependents
  */
 const getAllDependents = async (req: Request) => {
-  return executePaginatedQuery<any, DependentSelect<DefaultArgs>>(
+  const { data, meta } = await executePaginatedQuery<any, DependentSelect>(
     req,
     prisma.dependent,
     {
@@ -47,6 +46,7 @@ const getAllDependents = async (req: Request) => {
       dependentId: true,
       caregiverCustomName: true,
       dependentCustomName: true,
+
       dependentUser: {
         select: {
           email: true,
@@ -65,6 +65,33 @@ const getAllDependents = async (req: Request) => {
       },
     }
   );
+
+  const formatData = data.map(async (item) => {
+    const conversation = await prisma.conversation.findFirst({
+      where: {
+        OR: [
+          {
+            userAId: item.caregiverId,
+            userBId: item.dependentId,
+          },
+          {
+            userAId: item.dependentId,
+            userBId: item.caregiverId,
+          },
+        ],
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    return {
+      ...item,
+      conversationId: conversation?.id || null,
+    };
+  });
+
+  return { data: await Promise.all(formatData), meta };
 };
 
 /**

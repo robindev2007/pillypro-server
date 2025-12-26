@@ -17,6 +17,7 @@ export function broadcast(message: string) {
 }
 
 export function sendMessage(clientId: string, message: string) {
+  console.log(`Message sent to ${clientId}, ${message}`);
   const socket = clients.get(clientId);
   if (socket) {
     socket.send(message);

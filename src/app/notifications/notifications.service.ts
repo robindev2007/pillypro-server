@@ -27,6 +27,11 @@ const getAllNotifications = async (req: Request) => {
     }
   );
 
+  prisma.notification.updateMany({
+    where: { userId: userId, isRead: false },
+    data: { isRead: true },
+  });
+
   return { data, meta };
 };
 

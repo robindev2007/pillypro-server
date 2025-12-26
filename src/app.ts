@@ -1,18 +1,27 @@
 // app.ts
+import { MedicineType, SlotType } from "@/prisma/generated/enums";
 import { apiReference } from "@scalar/express-api-reference";
 import compression from "compression";
 import cookieParser from "cookie-parser";
+import dayjs from "dayjs";
 import express from "express";
+import path from "path";
+import favicon from "serve-favicon";
 import env from "./config/env";
 import httpStatus from "./constant/httpStatus";
+import { prisma } from "./lib/db";
 import { attachUser } from "./middleware/auth.middleware";
 import errorMiddleware from "./middleware/error.middleware";
 import fancyLogger from "./middleware/logger.middleware";
 import routes from "./routes";
+import { PushNotificationService } from "./services/push-notificaion/push-notification.service";
 import { generatePostmanDoc } from "./utils/generatePostmanDoc";
-import { seedStressTestData } from "./workers";
+import { logger } from "./utils/logger";
 
 const app = express();
+
+// favicon
+app.use(favicon(path.join(process.cwd(), "public", "favicon.ico")));
 
 // 1. Compression (first for best performance)
 app.use(
@@ -59,10 +68,22 @@ app.get("/zod", async (req, res) => {
 
 // 5. Routes
 app.get("/", async (req, res) => {
-  await seedStressTestData();
+  // const a = await seedFrequentDoseData();
+  const data = await prisma.user.findFirst({
+    where: { email: "1@gmail.com" },
+  });
+
+  await data?.fcmTokens.map(async (token) => {
+    await PushNotificationService.sendNotification(data.id, {
+      title: "Test Notification",
+      body: "This is a test notification from Pilly Pro.",
+    });
+  });
+
   res.json({
     status: "success",
     message: `Welcome to the ${env.PROJECT_NAME} API`,
+    data: { data },
   });
 });
 
@@ -86,3 +107,58 @@ app.use((req, res) => {
 app.use(errorMiddleware);
 
 export default app;
+
+const seedFrequentDoseData = async () => {
+  const targetEmail = "1@gmail.com";
+  const user = await prisma.user.findUnique({ where: { email: targetEmail } });
+
+  if (!user) return logger.error("User not found");
+
+  // Generate 10-minute intervals: ["12:00 AM", "12:10 AM", "12:20 AM", ...]
+  const frequentTimes = generateIntervalTimes(10, 144); // 144 doses covers 24 hours
+
+  logger.info(`🚀 Seeding frequent dose medicine...`);
+
+  const slot = await prisma.medicineSlot.create({
+    data: {
+      userId: user.id,
+      doseName: "High Frequency Test Med",
+      medicineType: MedicineType.PILL,
+      slotType: SlotType.SMALL,
+      totalPills: 1000,
+      startDate: dayjs().subtract(1, "day").toDate(),
+      endDate: dayjs().add(7, "days").toDate(),
+      timezone: "Asia/Dhaka",
+      isActive: true,
+      notificationEnabled: true,
+      // Use the generated 10-minute interval times
+      medicineTimes: frequentTimes,
+    },
+  });
+
+  logger.info(`✅ Created slot with ${frequentTimes.length} doses per day.`);
+  return slot;
+};
+
+/**
+ * Generates an array of time strings in "hh:mm A" format
+ * spaced out by a specific interval.
+ * * @param intervalMinutes - Gap between doses (default 10)
+ * @param count - How many doses to generate (default 24 for a full cycle)
+ */
+export const generateIntervalTimes = (
+  intervalMinutes = 10,
+  count = 24
+): string[] => {
+  const times: string[] = [];
+  // Start at a clean hour (e.g., 12:00 AM)
+  let current = dayjs().startOf("day");
+
+  for (let i = 0; i < count; i++) {
+    // "hh:mm A" yields "01:00 AM", "01:10 AM", etc.
+    times.push(current.format("hh:mm A"));
+    current = current.add(intervalMinutes, "minute");
+  }
+
+  return times;
+};
