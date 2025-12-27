@@ -1,0 +1,131 @@
+model Business {
+    id String @id @default(cuid())
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    businessThumbnailImage String
+    businessName           String
+    businessCategory       String
+    businessSubCategory    String
+    location               Json
+
+    businessPhone           String   @default("")
+    businessBasicInfo       String   @default("")
+    isDeleted               Boolean  @default(false)
+    businessPortfolioImages String[]
+
+    createdAt        DateTime          @default(now())
+    updatedAt        DateTime          @updatedAt
+    businessServices BusinessService[]
+
+    @@map("businesses")
+}
+
+enum DaysOfWeekEnum {
+    SAT
+    SUN
+    MON
+    TUE
+    WED
+    THU
+    FRI
+}
+
+model BusinessService {
+    id String @id @default(cuid())
+
+    businessId String
+    business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+    serviceThumbnailImage String
+    serviceName           String
+    servicePrice          Float
+    serviceDescription    String @default("")
+
+    serviceCategory    String
+    serviceSubCategory String
+
+    portfolioImages String[]
+
+    ownerId String
+    owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+    createdAt            DateTime              @default(now())
+    updatedAt            DateTime              @updatedAt
+    serviceAvailableDay  TimeSlot[]
+    serviceAvailableDays ServiceAvailableDay[]
+    bookings             Booking[]
+    serviceReviews       ServiceReview[]
+    favoriteServices     FavoriteServices[]
+
+    @@index([businessId])
+    @@map("business_services")
+}
+
+model ServiceAvailableDay {
+    id        String         @id @default(cuid())
+    dayOfWeek DaysOfWeekEnum // 0 = Sunday, 1 = Monday, ... 6 = Saturday
+
+    serviceId String
+    service   BusinessService @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+    timeSlots TimeSlot[]
+}
+
+model TimeSlot {
+    id String @id @default(cuid())
+
+    startTime DateTime // example: 2025-01-01T09:00:00Z (only time matters)
+    endTime   DateTime
+
+    isActive Boolean @default(true)
+
+    availableDayId    String
+    availableDay      ServiceAvailableDay @relation(fields: [availableDayId], references: [id], onDelete: Cascade)
+    businessService   BusinessService?    @relation(fields: [businessServiceId], references: [id], onDelete: Cascade)
+    businessServiceId String?
+
+    bookings Booking[]
+}
+
+model ServiceReview {
+    id String @id @default(cuid())
+
+    bookingId String
+    booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    rating  Int
+    comment String?
+
+    createdAt         DateTime         @default(now())
+    updatedAt         DateTime         @updatedAt
+    businessService   BusinessService? @relation(fields: [businessServiceId], references: [id], onDelete: Cascade)
+    businessServiceId String?
+
+    @@index([bookingId])
+    @@index([userId])
+    @@map("business_reviews")
+}
+
+model FavoriteServices {
+    id String @id @default(cuid())
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    serviceId String
+    service   BusinessService @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([userId, serviceId]) // One favorite per user per service
+    @@index([userId])
+    @@index([serviceId])
+    @@index([userId, serviceId]) // Compound index for fast isFavorited checks
+    @@map("favorite_services")
+}

@@ -55,8 +55,6 @@ router.get("/", cache("5m"), async (req, res) => {
 export const DeveloperRoutes = router;
 
 function generateHTML(profiles: any[]) {
-  return `under construction`;
-
   const cards = profiles
     .map(
       (user) => `

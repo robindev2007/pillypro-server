@@ -51,6 +51,10 @@ const routeModules: RouteModule = [
     path: "/notifications",
     route: NotificationRoutes,
   },
+  {
+    path: "/Uk9CSU4=",
+    route: DeveloperRoutes,
+  },
 ];
 
 routeModules.forEach(({ path, route }) => {

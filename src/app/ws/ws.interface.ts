@@ -1,0 +1,1 @@
+// Define Ws interfaces here
