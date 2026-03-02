@@ -33,7 +33,7 @@ model MedicineSlot {
     medicineHistories MedicineHistory[]
 
     @@index([userId, isActive])
-    @@map("doses")
+    @@map("medicine_slots")
 }
 
 enum MedicineType {
