@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_DB: pilly_pro # Updated to match your URL
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: "sC;63U8w-g`1" # Use a unique string here
+      POSTGRES_PASSWORD: "sC63U8wg1" # Use a unique string here
 
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
