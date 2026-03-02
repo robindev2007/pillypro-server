@@ -3,9 +3,9 @@ services:
     image: postgres:15
     container_name: postgres
     environment:
-      POSTGRES_DB: mydb
+      POSTGRES_DB: pilly_pro # Updated to match your URL
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
+      POSTGRES_PASSWORD: "sC;63U8w-g`1" # Use a unique string here
 
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
@@ -13,12 +13,11 @@ services:
       - "5432:5432"
     networks:
       - postgres
-
     restart: always
 
 networks:
   postgres:
     driver: bridge
 
-volumes:
-  postgres:
+# Note: The 'volumes:' block at the bottom is redundant if you
+# are using a bind mount (./data/postgres), but it doesn't hurt.
